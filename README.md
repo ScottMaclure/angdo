@@ -16,25 +16,18 @@ Adapt some best practices while I'm at it.
 
 ## Installation
 
+### Local installation via Apache2
+
 * Clone git repo to ~/dev/projects/angdo
 * Add angdo.local to /etc/hosts
 * Create /etc/apache2/sites-available/angdo, using [docs/apache-vhost.conf].
 * sudo a2ensite angdo
 
-## Planning
+## Running Jasmine tests
 
-See [docs/project-plan.md] for details.
+Currently static SpecRunner: http://angdo.local/tests/SpecRunner.html
 
-## Conclusion
+## Read more
 
-Write my thoughts here as I progress.
-
-### 2013-05-02 - Getting started
-
-Ang's website is a fantastic resource.
-
-Example: the tutorial: http://docs.angularjs.org/tutorial/step_00
-
-
-
-
+* See [docs/project-plan.md] for a breakdown of features.
+* See [docs/project-journal.md] for thoughts as I develop.
