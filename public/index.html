@@ -18,12 +18,16 @@
 
             <div ng-controller="TodoListController">
 
+                <div>Search: <input ng-model="query"></div>
+
                 <ul>
-                    <li class="todoListItem" ng-repeat="todo in todoList">{{ todo.title }}</li>
+                    <li class="todoListItem" ng-repeat="todo in todoList | filter:query">
+                        {{ todo.title }}
+                    </li>
                 </ul>
 
                 <ol>
-                    <li ng-repeat="todo in todoList">
+                    <li ng-repeat="todo in todoList | filter:query">
                         {{ todo.title }}
                     </li>
                 </ol>
