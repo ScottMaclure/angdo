@@ -17,13 +17,6 @@
 
             <div ng-controller="TodoListController">
 
-                <h2>Overdue</h2>
-                <ol>
-                    <li class="todoListItem" ng-repeat="todo in todoList">
-                        {{ todo.title }}
-                    </li>
-                </ol>
-
                 <h2>Today <span ng-show="query">(Filtered)</span></h2>
                 <ol>
                     <li class="todoListItem" ng-repeat="todo in todoList">
@@ -31,14 +24,21 @@
                     </li>
                 </ol>
 
-                <h2>Sooner <span ng-show="query">(Filtered)</span></h2>
+                <h2>Tomorrow <span ng-show="query">(Filtered)</span></h2>
                 <ol>
                     <li ng-repeat="todo in todoList">
                         {{ todo.title }}
                     </li>
                 </ol>
 
-                <h2>Later <span ng-show="query">(Filtered)</span></h2>
+                <h2>Next 7 Days <span ng-show="query">(Filtered)</span></h2>
+                <ol>
+                    <li ng-repeat="todo in todoList">
+                        {{ todo.title }}
+                    </li>
+                </ol>
+
+                <h2>Sometime Later <span ng-show="query">(Filtered)</span></h2>
                 <ol>
                     <li ng-repeat="todo in todoList">
                         {{ todo.title }}
