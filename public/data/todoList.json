@@ -1,20 +1,32 @@
 [
 	{
+		"done": false,
+		"cleared": false,
 		"title": "Cook dinner"
 	},
 	{
+		"done": false,
+		"cleared": false,
 		"title": "Meditate"
 	},
 	{
+		"done": false,
+		"cleared": false,
 		"title": "Pay credit card"
 	},
 	{
+		"done": false,
+		"cleared": false,
 		"title": "Organise brother's birthday"
 	},
 	{
+		"done": false,
+		"cleared": false,
 		"title": "Invoice Client X"
 	},
 	{
+		"done": false,
+		"cleared": false,
 		"title": "Fix bug Y in project Z"
 	}
-];
+]

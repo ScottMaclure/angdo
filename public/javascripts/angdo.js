@@ -7,29 +7,16 @@
  * TODO Later, load from local storage.
  */
 
-function TodoListController($scope) {
+var Angdo = angular.module('Angdo', []);
 
-	$scope.todoList = [
+Angdo.controller('TodoListController', function($scope, $http) {
 
-		{
-			"title": "Cook dinner"
-		},
-		{
-			"title": "Meditate"
-		},
-		{
-			"title": "Pay credit card"
-		},
-		{
-			"title": "Organise brother's birthday"
-		},
-		{
-			"title": "Invoice Client X"
-		},
-		{
-			"title": "Fix bug Y in project Z"
-		}
+	// Load JSON data from server
+	$http.get('data/todoList.json')
+		 .then(function (res) {
+			//$scope.todoList = JSON.parse(res.data);
+			$scope.todoList = res.data;
+			console.log('$scope:', $scope);
+		});
 
-	];
-
-}
+});

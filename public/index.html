@@ -1,33 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="Angdo">
     <head>
 
         <meta charset="UTF-8">
-
         <title>Angdo: Home</title>
 
     </head>
     <body>
 
         <h1>Angdo</h1>
-        <p>A learning project - building a TODO list in AngularJS</p>
+        <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
 
-        <div ng-app>
+        <div>
 
             <p>Nothing here {{'yet' + '!'}}. 1 + 2 = {{ 1 + 2 }}</p>
 
             <div ng-controller="TodoListController">
 
-                <div>Search: <input ng-model="query"></div>
-
-                <ul>
-                    <li class="todoListItem" ng-repeat="todo in todoList | filter:query">
+                <h2>Overdue</h2>
+                <ol>
+                    <li class="todoListItem" ng-repeat="todo in todoList">
                         {{ todo.title }}
                     </li>
-                </ul>
+                </ol>
 
+                <h2>Today <span ng-show="query">(Filtered)</span></h2>
                 <ol>
-                    <li ng-repeat="todo in todoList | filter:query">
+                    <li class="todoListItem" ng-repeat="todo in todoList">
+                        {{ todo.title }}
+                    </li>
+                </ol>
+
+                <h2>Sooner <span ng-show="query">(Filtered)</span></h2>
+                <ol>
+                    <li ng-repeat="todo in todoList">
+                        {{ todo.title }}
+                    </li>
+                </ol>
+
+                <h2>Later <span ng-show="query">(Filtered)</span></h2>
+                <ol>
+                    <li ng-repeat="todo in todoList">
                         {{ todo.title }}
                     </li>
                 </ol>
