@@ -2,31 +2,43 @@
 	{
 		"done": false,
 		"cleared": false,
-		"title": "Cook dinner"
+		"title": "Cook dinner",
+		"preferredOrder": 5,
+		"dueDate": "2013-05-03"
 	},
 	{
 		"done": false,
 		"cleared": false,
-		"title": "Meditate"
+		"title": "Meditate",
+		"preferredOrder": 4,
+		"dueDate": "2013-05-02"
 	},
 	{
 		"done": false,
 		"cleared": false,
-		"title": "Pay credit card"
+		"title": "Pay credit card",
+		"preferredOrder": 3,
+		"dueDate": "2013-05-01"
 	},
 	{
 		"done": false,
 		"cleared": false,
-		"title": "Organise brother's birthday"
+		"title": "Organise brother's birthday",
+		"preferredOrder": 2,
+		"dueDate": "2013-05-02"
 	},
 	{
 		"done": false,
 		"cleared": false,
-		"title": "Invoice Client X"
+		"title": "Invoice Client X",
+		"preferredOrder": 1,
+		"dueDate": "2013-05-03"
 	},
 	{
 		"done": false,
 		"cleared": false,
-		"title": "Fix bug Y in project Z"
+		"title": "Fix bug Y in project Z",
+		"preferredOrder": 0,
+		"dueDate": "2013-05-04"
 	}
 ]
