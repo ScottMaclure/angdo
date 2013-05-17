@@ -9,14 +9,22 @@
 
 var Angdo = angular.module('Angdo', []);
 
+var angdoScope;
+
 Angdo.controller('TodoListController', function($scope, $http) {
 
 	// Load JSON data from server
 	$http.get('data/todoList.json')
 		 .then(function (res) {
+
 			//$scope.todoList = JSON.parse(res.data);
 			$scope.todoList = res.data;
-			console.log('$scope:', $scope);
+
+			// Set default order
+			$scope.orderProp = 'dueDate';
+
+			// Debugging
+			angdoScope = $scope;
 		});
 
 });
