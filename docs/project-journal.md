@@ -16,6 +16,16 @@ In no particular order:
 * **module:** ng is the angular module, providing core services.
 * **filter:** These can be called with directives. E.g. ng-repeat="todo in todoList | filter:query"
 
+Other stuff:
+
+* **ng-bind-template**: Directive to eval an expression for the element html.
+
+### How to get access to a scope
+
+Useful for debugging:
+
+`var scope = angular.element(document.getElementsByClassName('TodoListController')).scope()`
+
 ## 2013-05-02 - Getting started
 
 Ang's website is a fantastic resource.
