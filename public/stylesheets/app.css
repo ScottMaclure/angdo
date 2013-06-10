@@ -1,0 +1,35 @@
+/*
+    TODO SM 10Jun13: Replace with SCSS etc.
+    TODO Responsive, mobile-first.
+*/
+
+/* Pure overrides */
+
+.pure-g > div, .pure-g-r > div {
+    box-sizing: border-box;
+}
+
+/* App css */
+
+body {
+    background-color: #eee;
+    margin: 5px;
+}
+
+.l-outerContainer {
+    max-width: 960px;
+    margin: auto;
+}
+
+.todoListItem {
+    margin-bottom: 5px;
+}
+
+.todoListItem .dueDate {
+    color: #666;
+    font-style: italic;
+}
+
+.sidebar {
+    padding-left: 10px;
+}

@@ -7,11 +7,16 @@
  * TODO Later, load from local storage.
  */
 
-var Angdo = angular.module('Angdo', []);
+// Define module with no deps.
+var angDo = angular.module('angDo', []);
 
-var angdoScope;
+// Debugging var in global scope.
+var angDoScope;
 
-Angdo.controller('TodoListController', function($scope, $http) {
+angDo.controller('TodoListController', function($scope, $http) {
+
+    // Debugging
+    angDoScope = $scope;
 
 	// Load JSON data from server
 	$http.get('data/todoList.json')
@@ -21,10 +26,8 @@ Angdo.controller('TodoListController', function($scope, $http) {
 			$scope.todoList = res.data;
 
 			// Set default order
-			$scope.orderProp = 'dueDate';
-
-			// Debugging
-			angdoScope = $scope;
+			//$scope.orderProp = 'dueDate';
+            $scope.orderProp = 'preferredOrder';
 		});
 
 });

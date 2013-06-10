@@ -31,3 +31,14 @@ Currently static SpecRunner: http://angdo.local/tests/SpecRunner.html
 
 * See [docs/project-plan.md] for a breakdown of features.
 * See [docs/project-journal.md] for thoughts as I develop.
+
+## Viewing ng-scopes
+
+<style>
+    .ng-scope { border: 1px solid red; }
+</style>
+
+## Developing with a god object
+
+angDoScope.orderProp = 'preferredOrder'; angDoScope.$apply();
+angDoScope.orderProp = 'dueDate'; angDoScope.$apply();

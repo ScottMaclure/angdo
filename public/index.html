@@ -1,33 +1,67 @@
 <!doctype html>
-<html lang="en" ng-app="Angdo">
+<html lang="en" ng-app="angDo">
     <head>
 
         <meta charset="UTF-8">
         <title>Angdo: Home</title>
 
+        <link rel="stylesheet" href="stylesheets/pure-min.css">
+        <link rel="stylesheet" href="stylesheets/app.css">
+
+        <!-- Visually display Angular's scopes on the page -->
+        <!--
         <style>
             .ng-scope { border: 1px solid red; }
         </style>
+        -->
 
     </head>
     <body>
 
-        <h1>Angdo</h1>
-        <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
+        <div class="l-outerContainer">
 
-        <div class="TodoListController" ng-controller="TodoListController">
+            <header>
+                <h1>Angdo</h1>
+                <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
+            </header>
 
-            <div>
-                Sort by:
-                <a href="" ng-model="orderProp" data-value="preferredOrder">preferred order</a>
+            <div class="pure-g-r">
+
+                <div class="pure-u-1-2">
+                    <div class="TodoListController" ng-controller="TodoListController">
+
+                        <div class="pure-g-r">
+                            <div class="pure-u-1-2">
+                                Sort by:
+                                <select ng-model="orderProp">
+                                    <option value="preferredOrder">Preferred order</option>
+                                    <option value="dueDate">Due date</option>
+                                </select>
+                            </div>
+                            <div class="pure-u-1-2">
+                                Search: <input ng-model="query">
+                            </div>
+                        </div>
+
+                        <h2>Todo Today</h2>
+                        <ul>
+                            <li class="todoListItem" ng-repeat="todo in todoList | filter:query | orderBy:orderProp">
+                                <div>
+                                    <span class="preferredOrder">#{{ todo.preferredOrder + 1 }}</span>
+                                    <span class="title">{{ todo.title }}</span>
+                                </div>
+                                <div class="dueDate">Due: {{ todo.dueDate }}</i></div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="pure-u-1-2 sidebar">
+                    What goes on over here?
+                </div>
+
             </div>
-
-            <h2>Todo Today</h2>
-            <ol>
-                <li class="todoListItem" ng-repeat="todo in todoList | orderBy:orderProp">
-                    {{ todo.title }}
-                </li>
-            </ol>
 
         </div>
 
