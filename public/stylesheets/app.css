@@ -9,15 +9,22 @@
     box-sizing: border-box;
 }
 
+pre {
+    font-size: 0.8em;
+}
+
 /* App css */
 
 body {
     background-color: #eee;
-    margin: 5px;
+    margin: 10px;
+}
+
+.m-searchBox {
+    margin-top: 25px;
 }
 
 .l-outerContainer {
-    max-width: 960px;
     margin: auto;
 }
 
