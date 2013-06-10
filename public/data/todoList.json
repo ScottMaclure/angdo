@@ -1,5 +1,6 @@
 [
 	{
+        "id": 1,
 		"done": false,
 		"cleared": false,
 		"title": "Cook dinner",
@@ -7,6 +8,7 @@
 		"dueDate": "2013-05-03"
 	},
 	{
+        "id": 2,
 		"done": false,
 		"cleared": false,
 		"title": "Meditate",
@@ -14,6 +16,7 @@
 		"dueDate": "2013-05-02"
 	},
 	{
+        "id": 3,
 		"done": false,
 		"cleared": false,
 		"title": "Pay credit card",
@@ -21,6 +24,7 @@
 		"dueDate": "2013-05-01"
 	},
 	{
+        "id": 4,
 		"done": false,
 		"cleared": false,
 		"title": "Organise brother's birthday",
@@ -28,6 +32,7 @@
 		"dueDate": "2013-05-02"
 	},
 	{
+        "id": 5,
 		"done": false,
 		"cleared": false,
 		"title": "Invoice Client X",
@@ -35,10 +40,19 @@
 		"dueDate": "2013-05-03"
 	},
 	{
+        "id": 6,
 		"done": false,
 		"cleared": false,
 		"title": "Fix bug Y in project Z",
 		"preferredOrder": 0,
 		"dueDate": "2013-05-04"
-	}
+	},
+    {
+        "id": 7,
+        "done": false,
+        "cleared": false,
+        "title": "Complete the AngularJS tutorial",
+        "preferredOrder": 6,
+        "dueDate": "2013-06-10"
+    }
 ]
