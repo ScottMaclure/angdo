@@ -18,48 +18,85 @@
     </head>
     <body>
 
-        <div class="l-outerContainer">
+        <!--
+            TODO Define separate controllers, share the todolist and other data. Services?
+        -->
+        <div class="l-outerContainer" ng-controller="TodoListController">
 
             <header>
-                <h1>Angdo</h1>
-                <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
+                <div class="pure-g-r">
+                    <div class="pure-u-2-3">
+                        <h1><a href="/">Angdo</a></h1>
+                        <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
+                    </div>
+                    <div class="pure-u-1-3">
+                        <div class="m-searchBox">
+                            Search: <input ng-model="query">
+                        </div>
+                    </div>
+                </div>
             </header>
 
-            <div class="pure-g-r">
+            <div class="l-body">
 
-                <div class="pure-u-1-2">
-                    <div class="TodoListController" ng-controller="TodoListController">
+                <div class="pure-g-r">
+
+                    <div class="pure-u-1-3">
+
+                        <h2>Todo Today</h2>
 
                         <div class="pure-g-r">
-                            <div class="pure-u-1-2">
+                            <div class="pure-u-1">
                                 Sort by:
                                 <select ng-model="orderProp">
                                     <option value="preferredOrder">Preferred order</option>
                                     <option value="dueDate">Due date</option>
                                 </select>
                             </div>
-                            <div class="pure-u-1-2">
-                                Search: <input ng-model="query">
+                        </div>
+
+                        <div class="pure-g-r">
+                            <div class="pure-u-1">
+                                <ul>
+                                    <li class="todoListItem" ng-repeat="todo in todoList | filter:query | orderBy:orderProp">
+                                        <div>
+                                            <a ng-href="#/todo/{{ todo.id }}">
+                                                <span class="preferredOrder">#{{ todo.preferredOrder + 1 }}</span>
+                                                <span class="title">{{ todo.title }}</span>
+                                            </a>
+                                        </div>
+                                        <div class="dueDate">Due: {{ todo.dueDate }}</i></div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
-                        <h2>Todo Today</h2>
-                        <ul>
-                            <li class="todoListItem" ng-repeat="todo in todoList | filter:query | orderBy:orderProp">
-                                <div>
-                                    <span class="preferredOrder">#{{ todo.preferredOrder + 1 }}</span>
-                                    <span class="title">{{ todo.title }}</span>
-                                </div>
-                                <div class="dueDate">Due: {{ todo.dueDate }}</i></div>
-                            </li>
-                        </ul>
+                    </div>
+
+                    <div class="pure-u-1-3">
+                        <h4>Todo Details</h4>
+                        <div>
+                            Coming soon
+                        </div>
+                    </div>
+
+                    <div class="pure-u-1-3">
+
+                        <h4>Tags</h4>
+                        TODO show lists, further filtering. like wedoist.
 
                     </div>
+
                 </div>
 
-                <div class="pure-u-1-2 sidebar">
-                    What goes on over here?
+                <!--
+                <h4>Raw JSON </h4>
+                <div class="pure-g-r">
+                    <div class="pure-u-1">
+                        <pre>{{ todoList | json }}</pre>
+                    </div>
                 </div>
+                -->
 
             </div>
 
