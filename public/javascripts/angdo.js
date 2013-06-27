@@ -33,7 +33,7 @@ angDo.factory('Page', function () {
  */
 angDo.factory('ToDoListData', function ($http) {
 	console.log('ToDoListData requesting...');
-    return $http.get('data/todoList.json');
+    return $http.get('/data/todoList.json');
 });
 
 /**
@@ -96,15 +96,18 @@ angDo.controller('TodoItemController', function ($scope, $routeParams, Page, ToD
 
 /**
  * Configure routes to above controllers.
- * 
+ *
  * Note: You don't need to specify a controller here (which then gets scoped to ng-view),
  * you can do via your html using ng-controller. Interesting.
  */
 angDo.config(
-    ['$routeProvider', function ($routeProvider) {
+    ['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+
+		// Now more anchor-based routes.
+		$locationProvider.html5Mode(true);
 
         $routeProvider
-            .when('/index', {
+            .when('/home', {
                 templateUrl: '/partials/todo-list.html'
                 //controller: 'TodoListController'
             })
@@ -113,7 +116,7 @@ angDo.config(
                 //controller: 'TodoItemController'
             })
             .otherwise({
-                redirectTo: '/index'
+                redirectTo: '/home'
             });
 
     }]

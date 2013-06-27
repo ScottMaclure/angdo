@@ -21,7 +21,7 @@
                     <ul>
                         <li class="todoListItem" ng-repeat="todo in todoList | filter:query | orderBy:orderProp">
                             <div>
-                                <a ng-href="#/todo/{{ todo.id }}">
+                                <a ng-href="/todo/{{ todo.id }}">
                                     <span class="preferredOrder">#{{ todo.preferredOrder + 1 }}</span>
                                     <span class="title">{{ todo.title }}</span>
                                 </a>
