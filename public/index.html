@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <title>{{ Page.getTitle() }}</title>
+        <title>Angdo | {{ Page.getTitle() }}</title>
 
         <link rel="stylesheet" href="stylesheets/pure-min.css">
         <link rel="stylesheet" href="stylesheets/app.css">
@@ -23,13 +23,13 @@
         <!--
             TODO Define separate controllers, share the todolist and other data. Services?
         -->
-        <div class="l-outerContainer" ng-controller="TodoListController">
+        <div class="l-outerContainer">
 
             <header>
                 <div class="pure-g-r">
                     <div class="pure-u-2-3">
 
-                        <h1><a href="#/index">{{Page.getTitle()}}</a></h1>
+                        <h1><a href="#/index">Angdo</a>: {{ Page.getTitle() }}</h1>
 
                         <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
 
