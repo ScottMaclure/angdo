@@ -1,3 +1,4 @@
+/*global angular*/
 /**
  * Angdo.
  * Writing entire app in 1 JS file for now.
@@ -11,19 +12,19 @@
 var angDo = angular.module('angDo', []);
 
 // Debugging var in global scope.
-var angDoScope;
+//var angDoScope;
 
 /**
- * Main todo list controller object.
+ * Viewing a list of todo items.
  */
 angDo.controller('TodoListController', function($scope, $http) {
 
     // Debugging
-    angDoScope = $scope;
+    //angDoScope = $scope;
 
 	// Load JSON data from server
 	$http.get('data/todoList.json')
-		 .then(function (res) {
+        .then(function (res) {
 			//$scope.todoList = JSON.parse(res.data);
 			$scope.todoList = res.data;
 		});
@@ -35,19 +36,30 @@ angDo.controller('TodoListController', function($scope, $http) {
 });
 
 /**
- * Configure routes
+ * For viewing the details of a todo item.
+ */
+angDo.controller('TodoItemController', function ($scope, $routeParams) {
+    $scope.todoId = $routeParams.todoId;
+});
+
+/**
+ * Configure routes to above controllers.
  */
 angDo.config(
     ['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
-            .when(
-                '/index',
-                { templateUrl: 'partials/index.html', controller: angDo.controller('TodoListController')}
-            )
-            .when(
-                '/todo/:todoId',
-                { templateUrl: 'partials/todo.html', controller: angDo.controller('TodoController')}
-            )
-            .otherwise({redirectTo: '/index'});
+            .when('/index', {
+                templateUrl: '/partials/todo-list.html',
+                controller: 'TodoListController'
+            })
+            .when('/todo/:todoId', {
+                templateUrl: '/partials/todo-item.html',
+                controller: 'TodoItemController'
+            })
+            .otherwise({
+                redirectTo: '/index'
+            });
+
     }]
 );
