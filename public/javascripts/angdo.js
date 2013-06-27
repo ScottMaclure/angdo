@@ -1,4 +1,4 @@
-/*global angular*/
+/*global angular, Page*/
 /**
  * Angdo.
  * Writing entire app in 1 JS file for now.
@@ -11,16 +11,34 @@
 // Define module with no deps.
 var angDo = angular.module('angDo', []);
 
-// Debugging var in global scope.
-//var angDoScope;
+var ANGDO_TITLE_PREFIX = 'Angdo: ';
+
+/**
+ * Shared data between controllers.
+ */
+angDo.factory('Page', function () {
+    var title = ANGDO_TITLE_PREFIX + 'Default';
+    return {
+        getTitle: function () {
+            return title;
+        },
+        setTitle: function (newTitle) {
+            title = ANGDO_TITLE_PREFIX + newTitle;
+        }
+    };
+});
+
+/**
+ * Primary controller.
+ */
+angDo.controller('MainController', function ($scope, Page) {
+    $scope.Page = Page;
+});
 
 /**
  * Viewing a list of todo items.
  */
-angDo.controller('TodoListController', function($scope, $http) {
-
-    // Debugging
-    //angDoScope = $scope;
+angDo.controller('TodoListController', function($scope, $http, Page) {
 
 	// Load JSON data from server
 	$http.get('data/todoList.json')
@@ -33,13 +51,16 @@ angDo.controller('TodoListController', function($scope, $http) {
     //$scope.orderProp = 'dueDate';
     $scope.orderProp = 'preferredOrder';
 
+    Page.setTitle('Home');
+
 });
 
 /**
  * For viewing the details of a todo item.
  */
-angDo.controller('TodoItemController', function ($scope, $routeParams) {
+angDo.controller('TodoItemController', function ($scope, $routeParams, Page) {
     $scope.todoId = $routeParams.todoId;
+    Page.setTitle('Todo #' + $routeParams.todoId);
 });
 
 /**
