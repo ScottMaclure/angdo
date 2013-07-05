@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <title>Angdo | {{ Page.getTitle() }}</title>
+        <title ng-bind="Angdo | {{ Page.getTitle() }}"></title>
 
         <link rel="stylesheet" href="/stylesheets/pure-min.css">
         <link rel="stylesheet" href="/stylesheets/app.css">
@@ -29,7 +29,7 @@
                 <div class="pure-g-r">
                     <div class="pure-u-2-3">
 
-                        <h1><a href="/home">Angdo</a>: {{ Page.getTitle() }}</h1>
+                        <h1><a href="/home">Angdo</a>:<span ng-bind="{{ Page.getTitle() }}"></span></h1>
 
                         <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
 
