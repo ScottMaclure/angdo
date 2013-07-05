@@ -32,7 +32,6 @@ angDo.factory('Page', function () {
  * Return a promise.
  */
 angDo.factory('ToDoListData', function ($http) {
-	console.log('ToDoListData requesting...');
     return $http.get('/data/todoList.json');
 });
 
@@ -65,8 +64,6 @@ angDo.controller('TodoListController', function($scope, $http, Page, ToDoListDat
  * For viewing the details of a todo item.
  */
 angDo.controller('TodoItemController', function ($scope, $routeParams, Page, ToDoListData) {
-
-	console.log('TodoItemController running');
 
 	var todoId = parseInt($routeParams.todoId, 10);
 
