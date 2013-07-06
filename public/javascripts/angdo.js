@@ -103,8 +103,8 @@ angDo.config(function ($stateProvider, $locationProvider) {
 
 	// Bind routes
 	$stateProvider
-		.state('home', {
-			url: '', // root route
+		.state('index', {
+			url: '/', // root route
 			views: {
 				main: {
 					templateUrl: '/partials/todo-list.html'
