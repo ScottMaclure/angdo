@@ -2,7 +2,8 @@
 
 ## Phase 2: Good routing
 
-* Select and implement a routing system more flexible than ng-view. See /docs/posts/2013-07-06-routing.md for details. (2)
+* Setup bower to download directly into /public (for now).
+* Select and implement a routing/view system more flexible than ng-view.
 
 ## Phase 1: Getting Started (Started: 02Apr13)
 
@@ -17,3 +18,4 @@
 
 * Add jQuery to the app. Required for angular-ui at the moment.
 * Add karma test runner to the app. Write some basic tests.
+* Add RequireJS for loading dependencies in JS.
