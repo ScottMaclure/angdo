@@ -28,6 +28,16 @@ angDo.factory('Page', function () {
 });
 
 /**
+ * Simple service to track a search/filter value for the todo list.
+ * We could extend this into a more detailed object later.
+ */
+angDo.factory('SearchQuery', function () {
+	return {
+		text: ''
+	};
+});
+
+/**
  * Load JSON data from server. Currently static.
  * Return a promise.
  */
@@ -43,9 +53,27 @@ angDo.controller('MainController', function ($scope, Page) {
 });
 
 /**
+ * Provide a way to update the query.
+ */
+angDo.controller('TodoListSearchController', function ($scope, SearchQuery) {
+
+	$scope.query = SearchQuery;
+
+	// UI driven handler.
+	$scope.filterQuery = function () {
+		SearchQuery.setVal(this.query);
+	};
+
+});
+
+/**
  * Viewing a list of todo items.
  */
-angDo.controller('TodoListController', function($scope, $http, Page, ToDoListData) {
+angDo.controller('TodoListController', function($scope, $http, ToDoListData, SearchQuery) {
+
+	console.log('TodoListController running...');
+
+	$scope.query = SearchQuery;
 
 	// When ToDoListData returns from server, populate scope.
     ToDoListData.success(function (data) {
@@ -56,15 +84,25 @@ angDo.controller('TodoListController', function($scope, $http, Page, ToDoListDat
     //$scope.orderProp = 'dueDate';
     $scope.orderProp = 'preferredOrder';
 
-    Page.setTitle('Home');
+	// Use a 3rd-party lib to format a nice, human readable date.
+	$scope.now = moment().format('Do MMMM YYYY, hh:mm:ss.SSS a');
 
+});
+
+/**
+ * Summary information about the list.
+ */
+angDo.controller('TodoListInfoController', function ($scope, ToDoListData) {
+	ToDoListData.success(function (data) {
+		$scope.todoList = data;
+	});
 });
 
 /**
  * For viewing the details of a todo item.
  * Note that $stateParams is part of angular-ui-router. Replaces $routeParams.
  */
-angDo.controller('TodoItemController', function ($scope, $stateParams, Page, ToDoListData) {
+angDo.controller('TodoItemController', function ($scope, $stateParams, ToDoListData) {
 
 	var todoId = parseInt($stateParams.todoId, 10);
 
@@ -78,11 +116,8 @@ angDo.controller('TodoItemController', function ($scope, $stateParams, Page, ToD
 
 			if (dataItem.id === todoId) {
 
-				// Now assign data for views.
-
+				// Now assign data for views
 				$scope.todoItem = dataItem;
-
-				Page.setTitle('Todo #' + dataItem.title);
 
 				break;
 			}
@@ -103,19 +138,39 @@ angDo.config(function ($stateProvider, $locationProvider) {
 
 	// Bind routes
 	$stateProvider
+
 		.state('index', {
 			url: '/', // root route
 			views: {
-				main: {
+				header: {
+					templateUrl: '/partials/header.html'
+				},
+				contentLeft: {
 					templateUrl: '/partials/todo-list.html'
+				},
+				contentCenter: {
+					template: 'TODO contentCenter template!'
+				},
+				contentRight: {
+					templateUrl: '/partials/content-right.html'
 				}
 			}
 		})
+
 		.state('todoItem', {
 			url: '/todo/:todoId',
 			views: {
-				main: {
+				header: {
+					templateUrl: '/partials/header.html'
+				},
+				contentLeft: {
+					templateUrl: '/partials/todo-list.html'
+				},
+				contentCenter: {
 					templateUrl: '/partials/todo-item.html'
+				},
+				contentRight: {
+					templateUrl: '/partials/content-right.html'
 				}
 			}
 		})

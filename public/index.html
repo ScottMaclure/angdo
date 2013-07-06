@@ -20,37 +20,32 @@
 
     <body>
 
-        <!--
-            TODO Define separate controllers, share the todolist and other data. Services?
-        -->
         <div class="l-outerContainer">
 
-            <header>
+            <header ui-view="header"></header>
+
+            <!-- Main page layout -->
+            <div class="l-body">
+
                 <div class="pure-g-r">
-                    <div class="pure-u-2-3">
 
-                        <h1><a href="/">Angdo</a>:<span ng-bind="{{ Page.getTitle() }}"></span></h1>
+                    <div class="pure-u-1-3" ui-view="contentLeft"></div>
 
-                        <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
+                    <div class="pure-u-1-3" ui-view="contentCenter"></div>
 
-                    </div>
-                    <div class="pure-u-1-3">
-                        <div class="m-searchBox">
+                    <div class="pure-u-1-3" ui-view="contentRight"></div>
 
-                            Search: <input ng-model="query">
-
-                        </div>
-                    </div>
                 </div>
-            </header>
 
-            <!-- Can we have multiple views and replace only sections? -->
-            <div ui-view="main"></div>
+            </div>
+
+            <footer ui-view="footer"></footer>
 
         </div>
 
         <script src="/bower/angular/angular.min.js"></script>
         <script src="/bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="/bower/moment/min/moment.min.js"></script>
         <script src="/javascripts/angdo.js"></script>
 
     </body>

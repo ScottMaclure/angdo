@@ -1,0 +1,13 @@
+<div>
+    <h3>Tags</h3>
+    TODO show lists, further filtering. like wedoist.
+</div>
+
+<div ng-controller="TodoListInfoController">
+    <h3>Raw JSON for {{ todoList.length }} items</h3>
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <pre>{{ todoList | json }}</pre>
+        </div>
+    </div>
+</div>
