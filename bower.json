@@ -1,0 +1,6 @@
+{
+	"dependencies": {
+		"angular-ui-router": "~1.0.7",
+		"angular-ui-router": "~0.0.1"
+	}
+}
