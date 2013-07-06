@@ -1,4 +1,4 @@
-<h1>(We need sub-views)</h1>
+<h1>(We need sub-views) </h1>
 
 <div class="l-body">
 
@@ -43,20 +43,23 @@
 
         <div class="pure-u-1-3">
 
-            <h4>Tags</h4>
-            TODO show lists, further filtering. like wedoist.
+            <div>
+                <h4>Tags</h4>
+                TODO show lists, further filtering. like wedoist.
+            </div>
+
+            <div ng-controller="TodoListController">
+                <h4>Raw JSON for {{ todoList.length }} items</h4>
+                <div class="pure-g-r">
+                    <div class="pure-u-1">
+                        <pre>{{ todoList | json }}</pre>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
     </div>
 
-    <!--
-    <h4>Raw JSON </h4>
-    <div class="pure-g-r">
-        <div class="pure-u-1">
-            <pre>{{ todoList | json }}</pre>
-        </div>
-    </div>
-    -->
 
 </div>

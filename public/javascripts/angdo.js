@@ -10,10 +10,10 @@
  */
 
 // Define module with no deps.
-var angDo = angular.module('angDo', []);
+var angDo = angular.module('angDo', ['ui.state']);
 
 /**
- * Shared data between controllers.
+ * Shared data between controllers. Generic "Page" object.
  */
 angDo.factory('Page', function () {
     var title = 'Default';
@@ -28,7 +28,7 @@ angDo.factory('Page', function () {
 });
 
 /**
- * Load JSON data from server.
+ * Load JSON data from server. Currently static.
  * Return a promise.
  */
 angDo.factory('ToDoListData', function ($http) {
@@ -62,10 +62,11 @@ angDo.controller('TodoListController', function($scope, $http, Page, ToDoListDat
 
 /**
  * For viewing the details of a todo item.
+ * Note that $stateParams is part of angular-ui-router. Replaces $routeParams.
  */
-angDo.controller('TodoItemController', function ($scope, $routeParams, Page, ToDoListData) {
+angDo.controller('TodoItemController', function ($scope, $stateParams, Page, ToDoListData) {
 
-	var todoId = parseInt($routeParams.todoId, 10);
+	var todoId = parseInt($stateParams.todoId, 10);
 
 	// TODO Easier to have a dedicated query service instead, but this is easier to mock.
 	ToDoListData.success(function (data) {
@@ -92,29 +93,30 @@ angDo.controller('TodoItemController', function ($scope, $routeParams, Page, ToD
 });
 
 /**
- * Configure routes to above controllers.
- *
- * Note: You don't need to specify a controller here (which then gets scoped to ng-view),
- * you can do via your html using ng-controller. Interesting.
+ * Configure routes using angular-ui-router ($stateProvider).
+ * @see https://github.com/angular-ui/ui-router/wiki
  */
-angDo.config(
-    ['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+angDo.config(function ($stateProvider, $locationProvider) {
 
-		// Now more anchor-based routes.
-		$locationProvider.html5Mode(true);
+	// Now more anchor-based routes.
+	$locationProvider.html5Mode(true);
 
-        $routeProvider
-            .when('/home', {
-                templateUrl: '/partials/todo-list.html'
-                //controller: 'TodoListController'
-            })
-            .when('/todo/:todoId', {
-                templateUrl: '/partials/todo-item.html'
-                //controller: 'TodoItemController'
-            })
-            .otherwise({
-                redirectTo: '/home'
-            });
-
-    }]
-);
+	// Bind routes
+	$stateProvider
+		.state('home', {
+			url: '', // root route
+			views: {
+				main: {
+					templateUrl: '/partials/todo-list.html'
+				}
+			}
+		})
+		.state('todoItem', {
+			url: '/todo/:todoId',
+			views: {
+				main: {
+					templateUrl: '/partials/todo-item.html'
+				}
+			}
+		})
+});

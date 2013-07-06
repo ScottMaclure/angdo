@@ -29,7 +29,7 @@
                 <div class="pure-g-r">
                     <div class="pure-u-2-3">
 
-                        <h1><a href="/home">Angdo</a>:<span ng-bind="{{ Page.getTitle() }}"></span></h1>
+                        <h1><a href="/">Angdo</a>:<span ng-bind="{{ Page.getTitle() }}"></span></h1>
 
                         <p>A learning project - building a TODO list in AngularJS, but also tinkering with AngularJS in general.</p>
 
@@ -45,11 +45,12 @@
             </header>
 
             <!-- Can we have multiple views and replace only sections? -->
-            <div ng-view></div>
+            <div ui-view="main"></div>
 
         </div>
 
         <script src="/bower/angular/angular.min.js"></script>
+        <script src="/bower/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="/javascripts/angdo.js"></script>
 
     </body>
