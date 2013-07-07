@@ -1,4 +1,4 @@
-/*global angular, Page, console*/
+/*global angular, Page*/
 
 /**
  * Angdo.
@@ -16,14 +16,8 @@ var angDo = angular.module('angDo', ['ui.state']);
  * Shared data between controllers. Generic "Page" object.
  */
 angDo.factory('Page', function () {
-    var title = 'Default';
     return {
-        getTitle: function () {
-            return title;
-        },
-        setTitle: function (newTitle) {
-            title = newTitle;
-        }
+		title: 'Home'
     };
 });
 
@@ -49,13 +43,13 @@ angDo.factory('ToDoListData', function ($http) {
  * Primary controller.
  */
 angDo.controller('MainController', function ($scope, Page) {
-    $scope.Page = Page;
+    $scope.page = Page;
 });
 
 /**
  * Provide a way to update the query.
  */
-angDo.controller('TodoListSearchController', function ($scope, SearchQuery) {
+angDo.controller('TodoSearchController', function ($scope, SearchQuery) {
 
 	$scope.query = SearchQuery;
 
@@ -70,8 +64,6 @@ angDo.controller('TodoListSearchController', function ($scope, SearchQuery) {
  * Viewing a list of todo items.
  */
 angDo.controller('TodoListController', function($scope, $http, ToDoListData, SearchQuery) {
-
-	console.log('TodoListController running...');
 
 	$scope.query = SearchQuery;
 
@@ -143,7 +135,11 @@ angDo.config(function ($stateProvider, $locationProvider) {
 			url: '/', // root route
 			views: {
 				header: {
-					templateUrl: '/partials/header.html'
+					templateUrl: '/partials/header.html',
+					resolve: { Page: 'Page' },
+					controller: function ($scope, Page) {
+						Page.title = 'Home';
+					}
 				},
 				contentLeft: {
 					templateUrl: '/partials/todo-list.html'
@@ -161,7 +157,11 @@ angDo.config(function ($stateProvider, $locationProvider) {
 			url: '/todo/:todoId',
 			views: {
 				header: {
-					templateUrl: '/partials/header.html'
+					templateUrl: '/partials/header.html',
+					resolve: { Page: 'Page', stateParams: '$stateParams' },
+					controller: function ($scope, Page, stateParams) {
+						Page.title = 'Todo Item #' + stateParams.todoId;
+					}
 				},
 				contentLeft: {
 					templateUrl: '/partials/todo-list.html'
