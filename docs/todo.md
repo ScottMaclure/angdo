@@ -18,6 +18,7 @@
 
 ## Backlog
 
+* Move bower files out of public folder? How does that relate to requirejs?
 * Flesh out the edit form, full validated fields support.
 * Add RequireJS for loading dependencies in JS.
 * Add jQuery to the app. Required for angular-ui at the moment.
