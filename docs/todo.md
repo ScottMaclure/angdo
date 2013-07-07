@@ -3,8 +3,9 @@
 ## Phase 2: Good routing, public demo.
 
 * **DONE** Setup bower to download directly into /public (for now). Hook up in index.html.
-* angular-ui-router: Implement a routing/view system more flexible than ng-view.
+* **DONE** angular-ui-router: Implement a routing/view system more flexible than ng-view.
 * Setup angodo.maclure.com.au, deploy app there.
+* Setup requirejs, write md doc about it.
 
 ## Phase 1: Getting Started (Started: 02Apr13)
 
@@ -17,8 +18,10 @@
 
 ## Backlog
 
+* Flesh out the edit form, full validated fields support.
 * Add RequireJS for loading dependencies in JS.
 * Add jQuery to the app. Required for angular-ui at the moment.
 * Add karma test runner to the app. Write some basic tests.
-* Consider: Add meteor to the project, use for persisting/sharing data (and to learn meteor).
 * Add http://angular-ui.github.io/bootstrap/ to the app, for a polished UI. Get rid of Pure.
+* Consider: Add meteor to the project, use for persisting/sharing data (and to learn meteor).
+* Setup a nested view scenario. Perhaps for a hierchical nav?

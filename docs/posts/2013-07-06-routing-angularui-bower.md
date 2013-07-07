@@ -28,4 +28,14 @@ This is hooked up to $routeProvider:
 
 $stateProvider replaces $routeProvider.
 
-$
+## Not worrying about nested views just yet
+
+My app's layout can be handled by index.html. Plenty of regions to render views into.
+
+Later we'll want to be able to render views inside views etc, for complex sub-modules etc.
+
+## Best documentation to learn about the router
+
+Is the wiki:
+
+https://github.com/angular-ui/ui-router/wiki
