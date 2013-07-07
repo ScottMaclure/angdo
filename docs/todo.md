@@ -4,7 +4,7 @@
 
 * **DONE** Setup bower to download directly into /public (for now). Hook up in index.html.
 * **DONE** angular-ui-router: Implement a routing/view system more flexible than ng-view.
-* Setup requirejs, write md doc about it.
+* **DONE** Setup requirejs, write md doc about it.
 * Setup angodo.maclure.com.au, deploy app there.
 
 ## Phase 1: Getting Started (Started: 02Apr13)
@@ -18,9 +18,10 @@
 
 ## Backlog
 
-* Move bower files out of public folder? How does that relate to requirejs?
+* Create a new todo item.
 * Flesh out the edit form, full validated fields support.
-* Add RequireJS for loading dependencies in JS.
+* Setup production-ready code with RequireJS optimizer.
+* Move bower files out of public folder? How does that relate to requirejs?
 * Add jQuery to the app. Required for angular-ui at the moment.
 * Add karma test runner to the app. Write some basic tests.
 * Add http://angular-ui.github.io/bootstrap/ to the app, for a polished UI. Get rid of Pure.
