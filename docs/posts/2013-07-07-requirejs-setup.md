@@ -38,5 +38,13 @@ So it'll work with requirejs more easily/cleanly.
 
 Not a big fan of everything being downloaded into bower folder. I like my gruntfile :)
 
+## Conclusion
+
+Still uncertain about it's benefit for a single-page webapp. I think a gruntfile works just fine.
+
+I could see some benefit with a multi-page website that could load different services/controller files etc. Shrug.
+
+I get the feeling that AngularJS will evolve to not need RequireJS? Or make use of it intrinsically.
+
 
 
