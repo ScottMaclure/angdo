@@ -1,120 +1,50 @@
-/*global angular, Page, console*/
-
 /**
- * Angdo.
+ * angdo.
  * Writing entire app in 1 JS file for now.
  * Linted via JSHint in IDE.
  *
  * TODO Later, load from local storage.
- * TODO Separate file into individual files etc, gruntify.
  */
+define([
+	'angular',
+	'app/services/Page',
+	'app/services/SearchQuery',
+	'app/services/ToDoListData',
+	'app/controllers/MainController',
+	'app/controllers/TodoSearchController',
+	'app/controllers/TodoListController',
+	'app/controllers/TodoItemController',
+	'app/controllers/TodoListInfoController',
+	'app/routes'
+], function (
+	angular,
+	Page,
+	SearchQuery,
+	ToDoListData,
+	MainController,
+	TodoSearchController,
+	TodoListController,
+	TodoItemController,
+	TodoListInfoController,
+	routes
+) {
 
-// Define module with no deps.
-var angDo = angular.module('angDo', []);
+	// Define module with angular-ui-router as a dependency.
+	var angdo = angular.module('angdo', ['ui.state']);
 
-/**
- * Shared data between controllers.
- */
-angDo.factory('Page', function () {
-    var title = 'Default';
-    return {
-        getTitle: function () {
-            return title;
-        },
-        setTitle: function (newTitle) {
-            title = newTitle;
-        }
-    };
-});
+	angdo.factory('Page', Page);
+	angdo.factory('SearchQuery', SearchQuery);
+	angdo.factory('ToDoListData', ToDoListData);
 
-/**
- * Load JSON data from server.
- * Return a promise.
- */
-angDo.factory('ToDoListData', function ($http) {
-    return $http.get('/data/todoList.json');
-});
+	angdo.controller('MainController', MainController);
+	angdo.controller('TodoSearchController', TodoSearchController);
+	angdo.controller('TodoListController', TodoListController);
+	angdo.controller('TodoListInfoController', TodoListInfoController);
+	angdo.controller('TodoItemController', TodoItemController);
 
-/**
- * Primary controller.
- */
-angDo.controller('MainController', function ($scope, Page) {
-    $scope.Page = Page;
-});
+	angdo.config(routes);
 
-/**
- * Viewing a list of todo items.
- */
-angDo.controller('TodoListController', function($scope, $http, Page, ToDoListData) {
-
-	// When ToDoListData returns from server, populate scope.
-    ToDoListData.success(function (data) {
-		$scope.todoList = data;
-	});
-
-    // Set default order
-    //$scope.orderProp = 'dueDate';
-    $scope.orderProp = 'preferredOrder';
-
-    Page.setTitle('Home');
+	// RequireJS module
+	return angdo;
 
 });
-
-/**
- * For viewing the details of a todo item.
- */
-angDo.controller('TodoItemController', function ($scope, $routeParams, Page, ToDoListData) {
-
-	var todoId = parseInt($routeParams.todoId, 10);
-
-	// TODO Easier to have a dedicated query service instead, but this is easier to mock.
-	ToDoListData.success(function (data) {
-
-		// Lets find our todo item.
-		for (var i = 0; i < data.length; i++) {
-
-			var dataItem = data[i];
-
-			if (dataItem.id === todoId) {
-
-				// Now assign data for views.
-
-				$scope.todoItem = dataItem;
-
-				Page.setTitle('Todo #' + dataItem.title);
-
-				break;
-			}
-		}
-
-	});
-
-});
-
-/**
- * Configure routes to above controllers.
- *
- * Note: You don't need to specify a controller here (which then gets scoped to ng-view),
- * you can do via your html using ng-controller. Interesting.
- */
-angDo.config(
-    ['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-
-		// Now more anchor-based routes.
-		$locationProvider.html5Mode(true);
-
-        $routeProvider
-            .when('/home', {
-                templateUrl: '/partials/todo-list.html'
-                //controller: 'TodoListController'
-            })
-            .when('/todo/:todoId', {
-                templateUrl: '/partials/todo-item.html'
-                //controller: 'TodoItemController'
-            })
-            .otherwise({
-                redirectTo: '/home'
-            });
-
-    }]
-);
