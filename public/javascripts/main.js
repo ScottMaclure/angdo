@@ -9,7 +9,7 @@ require.config({
 		moment: 'bower/moment/moment'
 	},
 
-	// Shim if for libraries not supporting AMD.
+	// Shim is for libraries not supporting AMD.
 	shim: {
 		angular: {
 			exports : 'angular'
