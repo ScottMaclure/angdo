@@ -23,5 +23,6 @@ require.config({
 
 // Load main app.
 requirejs(['angular', 'angdo'], function (angular, angdo) {
+	// @see http://docs.angularjs.org/guide/bootstrap
 	angular.bootstrap(document, [ 'angdo' ]);
 });
