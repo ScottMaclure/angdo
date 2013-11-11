@@ -7,6 +7,7 @@ Demo site: http://angdo.maclure.com.au/
 ## Goals
 
 * Progressively build a functioning single-user TODO system.
+* Learn AngularJS
 * Adopt some best practices while I'm at it. But the focus is mainly on fun and learning.
 
 ## Key Concepts

@@ -1,10 +1,16 @@
 # Planning (with Fibonacci estimates)
 
-## Phase 3: Setup a test runner, requirejs optimiser
+## Phase 4: Setup a test runner, requirejs optimiser
 
 * Add karma + jasmine test runner to the app. Write some basic tests.
 * Setup production-ready code with RequireJS optimizer. Deploy to angdo.maclure.com.au
 * **Cancelled** Move bower files out of public folder? (For prod, use apache rules to block access to bower folder)
+
+## Phase 3: Migrate to angular-ui bootstrap
+
+* Setup http://angular-ui.github.io/bootstrap/
+* Collapse main view down to the list only (single column)
+* Clean out all the orphaned code as a result
 
 ## (DONE) Phase 2: Good routing, public demo.
 
