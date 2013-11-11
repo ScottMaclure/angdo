@@ -6,8 +6,9 @@ Demo site: http://angdo.maclure.com.au/
 
 ## Goals
 
-* Progressively build a functioning multi-user TODO system.
-* Adapt some best practices while I'm at it.
+* Progressively build a functioning single-user TODO system.
+* Learn AngularJS
+* Adopt some best practices while I'm at it. But the focus is mainly on fun and learning.
 
 ## Key Concepts
 
@@ -27,6 +28,8 @@ Demo site: http://angdo.maclure.com.au/
 ## Running Jasmine tests
 
 Currently static SpecRunner: http://angdo.local/tests/SpecRunner.html
+
+Will be migrated to Karma.
 
 ## Read more
 

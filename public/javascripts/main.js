@@ -9,7 +9,7 @@ require.config({
 		moment: 'bower/moment/moment'
 	},
 
-	// Shim if for libraries not supporting AMD.
+	// Shim is for libraries not supporting AMD.
 	shim: {
 		angular: {
 			exports : 'angular'
@@ -23,5 +23,6 @@ require.config({
 
 // Load main app.
 requirejs(['angular', 'angdo'], function (angular, angdo) {
+	// @see http://docs.angularjs.org/guide/bootstrap
 	angular.bootstrap(document, [ 'angdo' ]);
 });
